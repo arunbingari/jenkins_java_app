@@ -8,7 +8,7 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    echo "Building the 2nd time application..."
+                    echo "Building ..."
                 }
             }
         }
@@ -18,7 +18,7 @@ pipeline {
                     expression { params.executeTests }
                 }
                 script {
-                    echo "Testing the application 2nd time ..."
+                    echo "Testing  ..."
 
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    echo "Deploying the application..."
+                    echo "Deploying ..."
                     echo "Deploying the veriosn ${params.APP_VERSION}"
                 }
             }
