@@ -13,23 +13,24 @@ pipeline {
             }
         }
         stage('test') {
-            steps {
+           
                 when {
-                    expression { params.executeTests }
+                    expression { 
+                        params.executeTests 
+                    }
                 }
-                script {
+                steps {
                     echo "Testing the application 2nd time ..."
 
                 }
-            }
+            
         }
         stage('deploy') {
             steps {
-                script {
+                
                     echo "Deploying the application..."
                     echo "Deploying the veriosn ${params.APP_VERSION}"
                 }
             }
         }
     }
-}
