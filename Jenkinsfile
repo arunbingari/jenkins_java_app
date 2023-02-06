@@ -7,29 +7,30 @@ pipeline {
         stages {
         stage('build') {
             steps {
-                script {
+               
                     echo "Building ..."
-                }
+                
             }
         }
         stage('test') {
-            steps {
+           
                 when {
-                    expression { params.executeTests }
+                    expression { 
+                        params.executeTests 
+                    }
                 }
-                script {
-                    echo "Testing  ..."
+                steps {
+                    echo "Testing ..."
 
                 }
-            }
+            
         }
         stage('deploy') {
             steps {
-                script {
+                
                     echo "Deploying ..."
                     echo "Deploying the veriosn ${params.APP_VERSION}"
                 }
             }
         }
     }
-}
