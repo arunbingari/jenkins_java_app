@@ -15,7 +15,7 @@ pipeline {
         stage('test') {
             steps {
                 when {
-                     params.executeTests 
+                    expression { params.executeTests }
                 }
                 script {
                     echo "Testing the application 2nd time ..."
