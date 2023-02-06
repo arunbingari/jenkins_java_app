@@ -5,13 +5,14 @@ pipeline {
         booleanParam(name: 'executeTests', defaultValue: true, description: 'Test the application')
     }
         stages {
-        stage('build') {
-            steps {
-               
-                    echo "Building ..."
-                
+            stage ('init'){
+                gv = load 'scripts.groovy'
             }
-        }
+        stage('build') {
+            scripts{
+                gv.buildApp()
+            }
+            }
         stage('test') {
            
                 when {
@@ -19,18 +20,13 @@ pipeline {
                         params.executeTests 
                     }
                 }
-                steps {
-                    echo "Testing ..."
-
+                scripts{
+                    gv.testApp()
                 }
-            
         }
         stage('deploy') {
-            steps {
-                
-                    echo "Deploying ..."
-                    echo "Deploying the veriosn ${params.APP_VERSION}"
-                }
+            scripts{
+                gv.deployApp()
             }
         }
     }
